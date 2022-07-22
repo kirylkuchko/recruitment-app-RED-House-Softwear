@@ -1,0 +1,19 @@
+.current-date .current-date-abbreviated{
+    margin: 0 0;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 50px;
+    line-height: 56px;
+    letter-spacing: 0.09em;
+    color: #202020;
+}
+
+.current-date .current-date-full{
+    margin-top: 2px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 28px;
+    letter-spacing: -0.02em;
+    color: #202020;
+}

@@ -1,0 +1,35 @@
+.App {
+  margin: 0 auto;
+  width: 100%;
+  height: 90vh;  
+}
+
+.grid {
+  margin: 10vh auto 0 auto;
+  width: 80vw;
+  height: 80vh;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-auto-rows: minmax(100px, 50vh);
+}
+
+.App .grid .current-date-wrapper{
+  grid-column: 1 / 4;
+  grid-row: 1;
+}
+
+.App .grid .search-panel-wrapper{
+  grid-column: 7 / 12;
+  grid-row: 1;
+}
+
+.App .grid .result-wrapper{
+  grid-column: 1 / 4;
+  grid-row: 2;
+}
+
+.App .grid .history-table-wrapper{
+  grid-column: 7 / 12;
+  grid-row: 2;
+}

@@ -1,0 +1,27 @@
+.search-panel .search-panel-input{
+    width: 565px;
+    height: 59px;
+    border: 1.5px solid #202020;
+    filter: drop-shadow(0px 14px 35px rgba(0, 0, 0, 0.5));
+    border-radius: 10px;
+    background: transparent;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 25px;
+    letter-spacing: 0.05em;
+    color: #202020;
+}
+
+.search-panel .search-panel-button {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    margin: auto 0;
+    right: -10px;
+    background-color: none;
+    background-image: url('../../icons/search.svg');
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    border: none;
+}

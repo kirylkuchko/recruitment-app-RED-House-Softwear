@@ -1,0 +1,25 @@
+.history-list .history-list-header{
+    margin: 0 0;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 25px;
+    letter-spacing: 0.05em;
+    color: #202020;
+}
+
+.history-list {
+    margin-top: 60px;
+    padding: 0;
+    list-style-type: none;
+}
+
+.history-list .history-list-item{
+    margin-top: 20px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 23px;
+    letter-spacing: 0.05em;
+    color: #202020;
+}
