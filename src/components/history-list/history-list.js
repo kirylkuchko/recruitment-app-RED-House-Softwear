@@ -1,15 +1,22 @@
 import './history-list.css';
+import HistotryListItem from '../history-list-item/history-list-item';
 
-const HistotryList = () => {
+const HistotryList = ({data}) => {
+
+    //the function automatically generates list items based on received data from local storage
+    const elements = data.map((item) => {
+        const {id, ...itemProps} = item;
+
+        return (
+            <HistotryListItem key={id} {...itemProps}/>
+        )
+    });
+
     return (
         <div>
             <h3 className="history-list-header">Previous locations</h3>
             <ul className="history-list">
-                <li className="history-list-item">New York 2022-07-21 32°C</li>
-                <li className="history-list-item">Paris 2022-07-21 32°C</li>
-                <li className="history-list-item">Warsaw 2022-07-21 32°C</li>
-                <li className="history-list-item">Minsk 2022-07-21 32°C</li>
-                <li className="history-list-item">Amsterdam 2022-07-21 32°C</li>
+                {elements}
             </ul>
         </div>
 

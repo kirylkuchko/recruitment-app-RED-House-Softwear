@@ -1,0 +1,14 @@
+.history-list-item {
+    margin-top: 20px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 23px;
+    letter-spacing: 0.05em;
+    color: #202020;
+}
+
+.history-list-item h3 {
+    display: inline-block;
+    margin-right: 30px;
+}

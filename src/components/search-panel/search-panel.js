@@ -7,8 +7,8 @@ const SearchPanel = () => {
                 type="text"
                 className="search-panel-input"
                 pattern="search" 
-                required="true" 
-                value="Search your location"/>
+                required={true} 
+                defaultValue="Search your location"/>
             <button className="search-panel-button">
                     
             </button>
