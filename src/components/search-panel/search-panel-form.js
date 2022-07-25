@@ -46,7 +46,6 @@ class SearchPanelForm extends Component {
                     className="search-panel-form-input"
                     autoFocus={true}
                     placeholder="Search your location"
-                    style={{padding: "17px auto 17px 15px"}}
                     name="location"
                     value={location}
                     onChange={this.onValueChange} 

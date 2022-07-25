@@ -26,6 +26,29 @@
     color: #202020;
 }
 
+.result .result-header {
+    margin: 0;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 28px;
+    letter-spacing: 0.05em;
+    color: #202020;
+}
+
+.result .result-subheader {
+    margin: 0;
+    margin-top: 5vh;
+    width: 326px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 37px;   
+    text-align: justify;
+    letter-spacing: 0.05em;
+    color: #202020; 
+}
+
 @media (max-width: 1200px) {
 
     .result {
@@ -38,6 +61,15 @@
     
     .result .result-location{
         font-size: 31px;
+    }
+
+    .result .result-header {
+        font-size: 25px;
+    }
+
+    .result .result-subheader {
+        width: 272px;
+        font-size: 22px;
     }
 
 }
@@ -54,6 +86,15 @@
     
     .result .result-location{
         font-size: 26px;
+    }
+
+    .result .result-header {
+        font-size: 23px;
+    }
+
+    .result .result-subheader {
+        width: 251px;
+        font-size: 19px;
     }
 
 }

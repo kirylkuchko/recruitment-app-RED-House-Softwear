@@ -23,12 +23,22 @@ class Result extends Component {
         const location = this.props.location;
         const temperature = this.props.temperature;
 
-        return (
-            <div className="result">
-                <h2 className="result-temperature">31{temperature}°C </h2>
-                <h3 className="result-location">London{location}</h3>
-            </div>
-        )
+        if(!this.props.location || !this.props.temperature) {
+            return (
+                <div className="result">
+                    <h2 className="result-header">No Location Found</h2>
+                    <h3 className="result-subheader">Сheck the spelling of the locale name or enter a different location</h3>
+                </div>
+            )
+        } else {
+            return (
+                <div className="result">
+                    <h2 className="result-temperature">{temperature}°C </h2>
+                    <h3 className="result-location">{location}</h3>
+                </div>
+            )
+        }
+
     }
 }  
 
