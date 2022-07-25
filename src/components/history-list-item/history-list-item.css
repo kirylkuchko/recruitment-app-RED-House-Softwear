@@ -1,14 +1,44 @@
 .history-list-item {
     margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+}
+
+.history-list-item h3 {
+    margin: 0;
     font-style: normal;
     font-weight: 400;
-    font-size: 21px;
-    line-height: 23px;
+    font-size: 25px;
+    line-height: 25px;
     letter-spacing: 0.05em;
     color: #202020;
 }
 
-.history-list-item h3 {
-    display: inline-block;
-    margin-right: 30px;
+.history-list-item .history-list-item-location {
+    text-align: left;
+}
+
+.history-list-item .history-list-item-date {
+    text-align: right;
+}
+
+.history-list-item .history-list-item-temperature {
+    text-align: right;
+}
+
+@media (max-width: 1200px) {
+
+    .history-list-item h3{
+        font-size: 21px;
+    }
+    
+}
+
+@media (max-width: 991px) {
+
+    .history-list-item h3{
+        font-size: 18px;
+    }
+
 }

@@ -5,6 +5,7 @@
 .search-panel-form .search-panel-form-input{
     width: 100%;
     height: 6vh;
+    padding: 17px auto 17px 15px !important;
     border: 1.5px solid #202020;
     filter: drop-shadow(0px 14px 35px rgba(0, 0, 0, 0.5));
     border-radius: 10px;
@@ -12,9 +13,13 @@
     font-style: normal;
     font-weight: 500;
     font-size: 22px;
-    line-height: 25px;
+    line-height: 22px;
     letter-spacing: 0.05em;
     color: #202020;
+}
+
+.search-panel-form input{
+    padding: 0 15px;
 }
 
 .search-panel-form .search-panel-form-button {
