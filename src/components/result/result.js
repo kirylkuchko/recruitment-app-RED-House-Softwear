@@ -1,4 +1,4 @@
-import {Component} from 'react'
+import {Component} from 'react';
 import './result.css';
 
 //I chose the method of changing the state through a class, and not through functional hooks, for the sake of showing my skills

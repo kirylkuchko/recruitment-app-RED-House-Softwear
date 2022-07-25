@@ -1,4 +1,4 @@
-.search-panel .search-panel-input{
+.search-panel-form .search-panel-form-input{
     width: 565px;
     height: 59px;
     border: 1.5px solid #202020;
@@ -13,7 +13,7 @@
     color: #202020;
 }
 
-.search-panel .search-panel-button {
+.search-panel-form .search-panel-form-button {
     position: relative;
     width: 30px;
     height: 30px;

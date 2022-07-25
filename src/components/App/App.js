@@ -1,63 +1,95 @@
-import './App.css';
+import {Component} from 'react';
+
 import CurrentDate from '../current-date/current-date';
-import SearchPanel from '../search-panel/search-panel';
+import SearchPanelForm from '../search-panel/search-panel-form';
 import Result from '../result/result';
 import HistotryList from '../history-list/history-list';
 
-function App() {
+import './App.css';
+const APIKey = '3a605c93b5d4b3b09652e2f83a4d842b';
+class App extends Component{
 
-  //test data for history list
-  const dataForHistoryList = () => {
-    return (
-      [{key:1,location:'New York',date:'2022-07-21',temperature:'32°C'},
-      {key:2,location:'Paris',date:'2022-07-21',temperature:'32°C'},
-      {key:3,location:'Warsaw',date:'2022-07-21',temperature:'32°C'},
-      {key:4,location:'Minsk',date:'2022-07-21',temperature:'32°C'},
-      {key:5,location:'Amsterdam',date:'2022-07-21',temperature:'32°C'}]
-    )
+  constructor(props) {
+    super(props);
+    this.state = {
+      location: '',
+      temperature: '',
+      date: this.createDate()
+    }
+    
   }
 
-  const APIKey = 'ENSZ9FMwCghxV7dMvxl2TEr3s261wUye';
+  createDate = () => {
+    const today = new Date();
+    return {day:today.getDate(),
+            month:today.getMonth(),
+            year:today.getFullYear()
+          }
+  }
 
-  //function for accuweather request with to GET req: first for location key, second for temperature by location key
-  const request = async (location) => {
-    return fetch(`http://dataservice.accuweather.com/locations/v1/cities/search?apikey=${APIKey}&q=${location}`)
-      .then((response) => {
-        return response.json()[0].Key;
-      }).then((locationKey) => {
-        fetch(`http://dataservice.accuweather.com/currentconditions/v1/${locationKey}?apikey=${APIKey}`)
-          .then((response) => {
-            return response.json().Temperature.Metric.Value})
+  //function for openweathermap request with to GET req: first to geo for lat and lon, second for temperature by coordinates
+  request = async (location) => {
+    //request for lat and lon by city name
+    return fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=1&appid=${APIKey}`)
+      .then((geoResponse) => {
+        return geoResponse.json();
+      }).then((geoResponse) => {
+        //request for temperature by coordinates
+        fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${geoResponse[0].lat}&lon=${geoResponse[0].lon}&appid=${APIKey}`)
+          .then((tempResponse) => {
+            return tempResponse.json();
+          }).then((tempResponse) => {
+              this.setState({
+                temperature: tempResponse.main.temp
+              });
+            })
           .catch(function (e) {
             console.log(e);
-          })
-      }).catch(function (e) {
-        console.log(e);
-      });
+          }) 
+        }).catch(function (e) {
+            console.log(e);
+          });
   }
 
-  console.log(request('Minsk'));
+  onSerchSubmit = (location) => {
+    this.setState(
+      {location}
+    );
+    this.request(location);
+  }
 
-  return (
-    <div className="App">
-      <div className="grid">
-        <div className="current-date-wrapper">
-          <CurrentDate/>
-        </div>
-        <div className="search-panel-wrapper">
-          <SearchPanel/>
-        </div>
-        <div className="result-wrapper">
-          <Result temperature='32°C' location='Minsk'/> 
-        </div>
-        <div className="history-table-wrapper">
-          <HistotryList data={dataForHistoryList()}/>
+  render () {
+     //test data for history list
+    const dataForHistoryList = 
+        [{key:1,location:'New York',date:'2022-07-21',temperature:'32°C'},
+        {key:2,location:'Paris',date:'2022-07-21',temperature:'32°C'},
+        {key:3,location:'Warsaw',date:'2022-07-21',temperature:'32°C'},
+        {key:4,location:'Minsk',date:'2022-07-21',temperature:'32°C'},
+        {key:5,location:'Amsterdam',date:'2022-07-21',temperature:'32°C'}];
+
+
+    return (
+      <div className="App">
+        <div className="grid">
+          <div className="current-date-wrapper">
+            <CurrentDate date={this.state.date}/>
+          </div>
+          <div className="search-panel-wrapper">
+            <SearchPanelForm
+              onSerchSubmit={this.onSerchSubmit}/>
+          </div>
+          <div className="result-wrapper">
+            <Result temperature='32°C' location='Minsk'/> 
+          </div>
+          <div className="history-table-wrapper">
+            <HistotryList data={dataForHistoryList}/>
+          </div>
         </div>
       </div>
-    </div>
-  );
-
-
+    );
+  }
 }
+
+
 
 export default App;
