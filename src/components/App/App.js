@@ -16,7 +16,8 @@ class App extends Component{
 			temperature: '',
 			date: this.createDate(),
 			historyList: [],
-			historyLength: 0
+			historyLength: 0,
+			badRequest: false
 		}
 	}
 
@@ -32,6 +33,7 @@ class App extends Component{
 
 	//function for openweathermap request with two GET req: first to geo for lat and lon, second for temperature by coordinates
 	onSerchSubmit = async (location) => {
+		this.setState({badRequest: true});
 		//request for lat and lon by city name
 		return fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=1&appid=${APIKey}`)
 			.then((geoResponse) => {
@@ -48,21 +50,18 @@ class App extends Component{
 							this.onResponseFromServer(data);
 						})
 					.catch(function (e) {
-						this.onBadRespone();
 						console.log(e);
-					}) 
+					})
 				}).catch(function (e) {
-						this.onBadRespone();
-						console.log(e);
+					console.log(e);
 					});
 	}
 
 	//function for drilling and for written data to history List
 	onResponseFromServer = (data) => {
 
-		const {location,temperature,date,historyList,historyLength} = this.state;
+		const {location,temperature,date,historyList,historyLength,br} = this.state;
 
-		console.log(location,temperature,date,historyList,historyLength);
 		const newHistory = historyList;
 		newHistory.push({
 			key:historyLength,
@@ -75,15 +74,8 @@ class App extends Component{
 			location: data.location,
 			temperature: data.temperature,
 			historyLength: (historyLength+1),
-			historyList: newHistory
-		})
-	}
-
-	//Function to handle the situation if the request failed
-	onBadRespone = () => {
-		this.setState({
-			location: '',
-			temperature: ''
+			historyList: newHistory,
+			badRequest: false
 		})
 	}
 
@@ -99,10 +91,10 @@ class App extends Component{
 							onSerchSubmit={this.onSerchSubmit}/>
 					</div>
 					<div className="result-wrapper">
-						<Result location={this.state.location} temperature={this.state.temperature} /> 
+						<Result location={this.state.location} temperature={this.state.temperature} badRequest={this.state.badRequest}/> 
 					</div>
 					<div className="history-table-wrapper">
-						<HistotryList data={this.state.history}/>
+						<HistotryList data={this.state.historyList}/>
 					</div>
 				</div>
 			</div>

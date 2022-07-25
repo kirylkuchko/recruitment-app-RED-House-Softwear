@@ -10,28 +10,16 @@ class SearchPanelForm extends Component {
         }
     }
 
+    //I use class field syntax for easy coding, instead of bind
     onValueChange = (e) => {
-
-/*         if (e.target.value === 'Search your location') {
-            this.setState({
-                location: ''
-            });
-        } 
-
-        if (e.target.value === '') {
-            this.setState({
-                location: 'Search your location'
-            })
-        } */
-
         this.setState({
             location: e.target.value
         })
     }
-
+    
     onSubmit = (e) => {
-        console.log(e);
         this.props.onSerchSubmit(this.state.location);
+        console.log(e);
         e.preventDefault();
     }
 
@@ -42,7 +30,6 @@ class SearchPanelForm extends Component {
         return (
             <form className="search-panel-form" action="submit" onSubmit={this.onSubmit}>
                 <input 
-                    
                     className="search-panel-form-input"
                     autoFocus={true}
                     placeholder="Search your location"

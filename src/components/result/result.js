@@ -5,32 +5,37 @@ import './result.css';
 class Result extends Component {
     constructor(props) {
         super(props);
-        this.state = {
+        /* this.state = {
             temperature: '31°C',
             location: 'London'
-        }
+        } */
     }
 
     //I use class field syntax for easy coding, instead of bind
     setNewResult = ({newLocation, newTemperature}) => {
-        this.setState({
+        /* this.setState({
             temperature: newTemperature,
             location: newLocation
-        });
+        }); */
     }
 
     render() {
-        const location = this.props.location;
-        const temperature = this.props.temperature;
+        const {location, temperature, badRequest } = this.props;
 
-        if(!this.props.location || !this.props.temperature) {
+        if(!temperature) {
+            return (
+                <div className="result">
+
+                </div>
+            )
+        } else if (badRequest) {
             return (
                 <div className="result">
                     <h2 className="result-header">No Location Found</h2>
                     <h3 className="result-subheader">Сheck the spelling of the locale name or enter a different location</h3>
                 </div>
             )
-        } else {
+        }else {
             return (
                 <div className="result">
                     <h2 className="result-temperature">{temperature}°C </h2>
