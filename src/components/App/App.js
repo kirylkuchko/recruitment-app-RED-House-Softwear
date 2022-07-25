@@ -16,7 +16,7 @@ class App extends Component{
 			temperature: '',
 			date: this.createDate(),
 			historyList: [],
-			historyLength: 0,
+			historyIndex: 0,
 			badRequest: false
 		}
 	}
@@ -60,20 +60,29 @@ class App extends Component{
 	//function for drilling and for written data to history List
 	onResponseFromServer = (data) => {
 
-		const {location,temperature,date,historyList,historyLength,br} = this.state;
+		const {location,temperature,date,historyList,historyIndex,br} = this.state;
+		const newHistory = [];
 
-		const newHistory = historyList;
+		//push new information on a start of list
 		newHistory.push({
-			key:historyLength,
+			key:historyIndex,
 			location:data.location,
 			date:date,
 			temperature:data.temperature
 		});
+		//take into account the case when the list is full (over 5)
+		if(historyIndex>4) {
+			for(let i=0; i<4; i++){
+				newHistory.push(historyList[i]);
+			}
+		} else {
+			newHistory.push(...historyList);
+		}
 
 		this.setState({
 			location: data.location,
 			temperature: data.temperature,
-			historyLength: (historyLength+1),
+			historyIndex: (historyIndex+1),
 			historyList: newHistory,
 			badRequest: false
 		})

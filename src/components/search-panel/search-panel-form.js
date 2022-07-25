@@ -6,25 +6,27 @@ class SearchPanelForm extends Component {
     constructor (props) {
         super(props);
         this.state = {
-            location: ''
+            value: ''
         }
     }
 
     //I use class field syntax for easy coding, instead of bind
     onValueChange = (e) => {
         this.setState({
-            location: e.target.value
+            value: e.target.value
         })
     }
     
     onSubmit = (e) => {
-        this.props.onSerchSubmit(this.state.location);
-        console.log(e);
+        this.props.onSerchSubmit(this.state.value);
+        this.setState({
+            value: ''
+        });
         e.preventDefault();
     }
 
     render () {
-        const {location} = this.state;
+        const {value} = this.state;
 
         //Made controlled form input for instant field validation and dynamic inputs
         return (
@@ -34,7 +36,7 @@ class SearchPanelForm extends Component {
                     autoFocus={true}
                     placeholder="Search your location"
                     name="location"
-                    value={location}
+                    value={value}
                     onChange={this.onValueChange} 
                     maxLength='30'/>
                 <button className="search-panel-form-button"></button>

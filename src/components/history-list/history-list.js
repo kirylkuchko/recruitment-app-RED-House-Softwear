@@ -12,14 +12,14 @@ const HistotryList = ({data}) => {
         )
     });
 
+   
     return (
-        <div>
+        <>
             <h3 className="history-list-header">Previous locations</h3>
             <ul className="history-list">
                 {elements}
             </ul>
-        </div>
-
+        </>
     )
 }
 

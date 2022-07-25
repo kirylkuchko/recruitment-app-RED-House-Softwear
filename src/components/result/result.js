@@ -1,61 +1,28 @@
-import {Component} from 'react';
 import './result.css';
 
 //I chose the method of changing the state through a class, and not through functional hooks, for the sake of showing my skills
-class Result extends Component {
-    constructor(props) {
-        super(props);
-        /* this.state = {
-            temperature: '31°C',
-            location: 'London'
-        } */
-    }
+const Result = ({location, temperature, badRequest}) => {
+    if(badRequest) {
+        return (
+            <div className="result">
+                <h2 className="result-header">No Location Found</h2>
+                <h3 className="result-subheader">Сheck the spelling of the locale name or enter a different location</h3>
+            </div>
+        )
+    } else if (!temperature) {
+        return (
+            <div className="result">
 
-    //I use class field syntax for easy coding, instead of bind
-    setNewResult = ({newLocation, newTemperature}) => {
-        /* this.setState({
-            temperature: newTemperature,
-            location: newLocation
-        }); */
-    }
-
-    render() {
-        const {location, temperature, badRequest } = this.props;
-
-        if(!temperature) {
-            return (
-                <div className="result">
-
-                </div>
-            )
-        } else if (badRequest) {
-            return (
-                <div className="result">
-                    <h2 className="result-header">No Location Found</h2>
-                    <h3 className="result-subheader">Сheck the spelling of the locale name or enter a different location</h3>
-                </div>
-            )
-        }else {
-            return (
-                <div className="result">
-                    <h2 className="result-temperature">{temperature}°C </h2>
-                    <h3 className="result-location">{location}</h3>
-                </div>
-            )
-        }
-
-    }
+            </div>
+        )
+    }else {
+        return (
+            <div className="result">
+                <h2 className="result-temperature">{temperature}°C </h2>
+                <h3 className="result-location">{location}</h3>
+            </div>
+        )
+    }  
 }  
-
-/* const Result = ({props}) => {
-    const location = props.location;
-    const temperature = props.temperature;
-    return (
-        <div className="result">
-            <h2 className="result-temperature">{temperature}</h2>
-            <h3 className="result-location">{location}</h3>
-        </div>
-    )
-} */
 
 export default Result;
