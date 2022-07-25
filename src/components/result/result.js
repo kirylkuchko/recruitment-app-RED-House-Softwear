@@ -25,8 +25,8 @@ class Result extends Component {
 
         return (
             <div className="result">
-                <h2 className="result-temperature">{temperature}°C</h2>
-                <h3 className="result-location">{location}</h3>
+                <h2 className="result-temperature">31{temperature}°C </h2>
+                <h3 className="result-location">London{location}</h3>
             </div>
         )
     }

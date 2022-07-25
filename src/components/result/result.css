@@ -1,15 +1,20 @@
+.result {
+    width: 400px;
+}
+
 .result .result-temperature{
     margin: 0 auto;
     font-style: normal;
     font-weight: 300;
     font-size: 200px;
+    text-align: start;
     line-height: 223px;
     letter-spacing: -0.05em;
     color: #202020;
     text-shadow: 0px 14px 35px rgba(0, 0, 0, 0.35);
 }
 
-.result .result-location{
+.result .result-location {
     margin: 0 auto;
     font-style: normal;
     font-weight: 400;
@@ -19,4 +24,36 @@
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: #202020;
+}
+
+@media (max-width: 1200px) {
+
+    .result {
+        width: 350px;
+    }
+
+    .result .result-temperature{
+        font-size: 175px;
+    }
+    
+    .result .result-location{
+        font-size: 31px;
+    }
+
+}
+
+@media (max-width: 991px) {
+    
+    .result {
+        width: 275px;
+    }
+
+    .result .result-temperature{
+        font-size: 135px;
+    }
+    
+    .result .result-location{
+        font-size: 26px;
+    }
+
 }
