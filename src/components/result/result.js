@@ -12,7 +12,7 @@ class Result extends Component {
     }
 
     //I use class field syntax for easy coding, instead of bind
-    setNewResult = ({newTemperature, newLocation}) => {
+    setNewResult = ({newLocation, newTemperature}) => {
         this.setState({
             temperature: newTemperature,
             location: newLocation
@@ -20,15 +20,27 @@ class Result extends Component {
     }
 
     render() {
-        const {temperature,location} = this.props;
-        
+        const location = this.props.location;
+        const temperature = this.props.temperature;
+
         return (
             <div className="result">
-                <h2 className="result-temperature">{temperature}</h2>
+                <h2 className="result-temperature">{temperature}°C</h2>
                 <h3 className="result-location">{location}</h3>
             </div>
         )
     }
-} 
+}  
+
+/* const Result = ({props}) => {
+    const location = props.location;
+    const temperature = props.temperature;
+    return (
+        <div className="result">
+            <h2 className="result-temperature">{temperature}</h2>
+            <h3 className="result-location">{location}</h3>
+        </div>
+    )
+} */
 
 export default Result;

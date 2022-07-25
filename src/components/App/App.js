@@ -14,16 +14,21 @@ class App extends Component{
     this.state = {
       location: '',
       temperature: '',
-      date: this.createDate()
+      date: this.createDate(),
+      //test data for history list
+      history: [],
+      historyLength: 0
     }
     
   }
 
+  //I create Date at a high level of component hierarchy, because it is needed in several of them, so it is better to calculate it 1 time
   createDate = () => {
     const today = new Date();
     return {day:today.getDate(),
             month:today.getMonth(),
-            year:today.getFullYear()
+            year:today.getFullYear(),
+            dayOfWeek:today.getDay()
           }
   }
 
@@ -40,8 +45,12 @@ class App extends Component{
             return tempResponse.json();
           }).then((tempResponse) => {
               this.setState({
-                temperature: tempResponse.main.temp
+                //added data about temperature to props, for prop drilling to components
+                temperature: (parseInt(tempResponse.main.temp)-273)
               });
+              return (parseInt(tempResponse.main.temp)-273);
+            }).then((temp) => {
+              this.onResponseFromServer(temp);
             })
           .catch(function (e) {
             console.log(e);
@@ -58,31 +67,41 @@ class App extends Component{
     this.request(location);
   }
 
+  onResponseFromServer = (temp) => {
+
+    const {location,temperature,date,history,historyLength} = this.state;
+
+    console.log(location,temperature,date,history,historyLength);
+    const newHistory = history;
+    newHistory.push({
+      key:historyLength,
+      location:location,
+      date:date,
+      temperature:temp
+    });
+
+    this.setState({
+      historyLength: (historyLength+1),
+      history: newHistory
+    })
+  }
+
   render () {
-     //test data for history list
-    const dataForHistoryList = 
-        [{key:1,location:'New York',date:'2022-07-21',temperature:'32°C'},
-        {key:2,location:'Paris',date:'2022-07-21',temperature:'32°C'},
-        {key:3,location:'Warsaw',date:'2022-07-21',temperature:'32°C'},
-        {key:4,location:'Minsk',date:'2022-07-21',temperature:'32°C'},
-        {key:5,location:'Amsterdam',date:'2022-07-21',temperature:'32°C'}];
-
-
     return (
       <div className="App">
         <div className="grid">
           <div className="current-date-wrapper">
-            <CurrentDate date={this.state.date}/>
+            <CurrentDate data={this.state.date}/>
           </div>
           <div className="search-panel-wrapper">
             <SearchPanelForm
               onSerchSubmit={this.onSerchSubmit}/>
           </div>
           <div className="result-wrapper">
-            <Result temperature='32°C' location='Minsk'/> 
+            <Result location={this.state.location} temperature={this.state.temperature} /> 
           </div>
           <div className="history-table-wrapper">
-            <HistotryList data={dataForHistoryList}/>
+            <HistotryList data={this.state.history}/>
           </div>
         </div>
       </div>

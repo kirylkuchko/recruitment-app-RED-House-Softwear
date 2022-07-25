@@ -12,6 +12,7 @@
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(2, 1fr);
   grid-auto-rows: minmax(100px, 50vh);
+  row-gap: 12vh;
 }
 
 .App .grid .current-date-wrapper{
