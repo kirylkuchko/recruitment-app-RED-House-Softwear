@@ -44,14 +44,12 @@ class SearchPanelForm extends Component {
                 <input 
                     type="text"
                     className="search-panel-form-input"
-                    /* pattern="search" 
-                    required={true}  */
+                    autoFocus={true}
                     name="location"
                     value={location}
-                    onChange={this.onValueChange}/>
-                <button className="search-panel-form-button">
-                        
-                </button>
+                    onChange={this.onValueChange} 
+                    maxLength='30'/>
+                <button className="search-panel-form-button"></button>
             </form>
         )
     }

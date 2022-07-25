@@ -93,7 +93,7 @@ class App extends Component{
           <div className="current-date-wrapper">
             <CurrentDate data={this.state.date}/>
           </div>
-          <div className="search-panel-wrapper">
+          <div className="search-panel-form-wrapper">
             <SearchPanelForm
               onSerchSubmit={this.onSerchSubmit}/>
           </div>
