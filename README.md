@@ -1,6 +1,6 @@
 # Description by Author - Kiryl Kuchko
 
-The layout was assembled based on the mocap. Project based on responsive layout, but unfortunately, due to time constraints, not everything was done. Namely, a mobile version and adaptation for tablets, but everything over 768px is provided.
+The layout was assembled based on the mocap - https://www.figma.com/file/IUdQ5h239HV94vMiP98Ib4/Weather-for-RED-House-Softwear?node-id=0%3A1. Project based on responsive layout, but unfortunately, due to time constraints, not everything was done. Namely, a mobile version and adaptation for tablets, but everything over 768px is provided.
 
 The Openweather API was used because Metaweather does not work. To demonstrate understanding of the principles of react and react components, in most cases I used a class approach instead of hooks, I can rewrite everything to hooks if you wish.
 
