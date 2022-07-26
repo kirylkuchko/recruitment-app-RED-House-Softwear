@@ -27,7 +27,6 @@ class SearchPanelForm extends Component {
 
     render () {
         const {value} = this.state;
-
         //Made controlled form input for instant field validation and dynamic inputs
         return (
             <form className="search-panel-form" action="submit" onSubmit={this.onSubmit}>
@@ -44,6 +43,5 @@ class SearchPanelForm extends Component {
         )
     }
 }    
-
 
 export default SearchPanelForm;

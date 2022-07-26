@@ -6,7 +6,8 @@ import Result from '../result/result';
 import HistotryList from '../history-list/history-list';
 
 import './App.css';
-const APIKey = '3a605c93b5d4b3b09652e2f83a4d842b';
+const API_KEY= '3a605c93b5d4b3b09652e2f83a4d842b';
+
 class App extends Component{
 
 	constructor(props) {
@@ -35,12 +36,12 @@ class App extends Component{
 	onSerchSubmit = async (location) => {
 		this.setState({badRequest: true});
 		//request for lat and lon by city name
-		return fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=1&appid=${APIKey}`)
+		return fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=1&appid=${API_KEY}`)
 			.then((geoResponse) => {
 				return geoResponse.json();
 			}).then((geoResponse) => {
 				//request for temperature by coordinates
-				fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${geoResponse[0].lat}&lon=${geoResponse[0].lon}&appid=${APIKey}`)
+				fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${geoResponse[0].lat}&lon=${geoResponse[0].lon}&appid=${API_KEY}`)
 					.then((tempResponse) => {
 						return tempResponse.json();
 					}).then((response) => {

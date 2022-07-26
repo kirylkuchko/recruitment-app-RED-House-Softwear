@@ -1,7 +1,6 @@
 import './history-list-item.css';
 
 const HistotryListItem = ({location, date, temperature}) => {
-
     return (
         <li className='history-list-item'>
             <h3 className="history-list-item-location">{location}</h3>

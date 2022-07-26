@@ -2,7 +2,7 @@ import './result.css';
 
 //I chose the method of changing the state through a class, and not through functional hooks, for the sake of showing my skills
 const Result = ({location, temperature, badRequest}) => {
-    if(badRequest) {
+    if (badRequest) {
         return (
             <div className="result">
                 <h2 className="result-header">No Location Found</h2>
@@ -15,7 +15,7 @@ const Result = ({location, temperature, badRequest}) => {
 
             </div>
         )
-    }else {
+    } else {
         return (
             <div className="result">
                 <h2 className="result-temperature">{temperature}°C </h2>
