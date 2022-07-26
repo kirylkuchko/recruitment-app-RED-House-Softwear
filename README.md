@@ -4,6 +4,8 @@ The layout was assembled based on the mocap - https://www.figma.com/file/IUdQ5h2
 
 The Openweather API was used because Metaweather does not work. To demonstrate understanding of the principles of react and react components, in most cases I used a class approach instead of hooks, I can rewrite everything to hooks if you wish.
 
+I also wanted to do that the search history would be saved in localstore, so that the history would be common for different sessions of one user, but did not have time.
+
 Also, for good, needed to rewrite the styles to the sass / scss preprocessor, or rather, use them from beginning (a small omission), this would reduce repetitions in the code, as well as introduce mixins.
 
 The entire development process was carried out with git version control.
