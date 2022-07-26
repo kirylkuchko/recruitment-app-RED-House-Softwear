@@ -6,6 +6,7 @@ import Result from '../result/result';
 import HistotryList from '../history-list/history-list';
 
 import './App.css';
+import Clouds from '../../img/Clouds.png';
 const API_KEY= '3a605c93b5d4b3b09652e2f83a4d842b';
 
 class App extends Component{
@@ -107,6 +108,7 @@ class App extends Component{
 						<HistotryList data={this.state.historyList}/>
 					</div>
 				</div>
+				<img src={Clouds} alt="clouds" className='clouds-img'/>
 			</div>
 		);
 	}
