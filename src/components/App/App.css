@@ -15,6 +15,7 @@
   grid-template-rows: 10vh 50vh;
   row-gap: 12vh;
   column-gap: 2vw;
+  z-index: 3;
 }
 
 .App .grid .current-date-wrapper{
@@ -30,11 +31,13 @@
 .App .grid .result-wrapper{
   grid-column: 1 / 5;
   grid-row: 2;
+  z-index: 2;
 }
 
 .App .grid .history-table-wrapper{
   grid-column: 7 / 13;
   grid-row: 2;
+  z-index: 2;
 }
 
 .App .clouds-img {
@@ -43,4 +46,5 @@
   max-height: 100%;
   left: 0px;
   bottom: 0px;
+  z-index: 1;
 }
