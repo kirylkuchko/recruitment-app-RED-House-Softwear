@@ -1,3 +1,13 @@
+# Description by Author - Kiryl Kuchko
+
+The layout was assembled based on the mocap. Project based on responsive layout, but unfortunately, due to time constraints, not everything was done. Namely, a mobile version and adaptation for tablets, but everything over 768px is provided.
+
+The Openweather API was used because Metaweather does not work. To demonstrate understanding of the principles of react and react components, in most cases I used a class approach instead of hooks, I can rewrite everything to hooks if you wish.
+
+Also, for good, needed to rewrite the styles to the sass / scss preprocessor, or rather, use them from beginning (a small omission), this would reduce repetitions in the code, as well as introduce mixins.
+
+The entire development process was carried out with git version control.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
